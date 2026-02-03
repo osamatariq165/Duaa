@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe6eb, #fff);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #ff5c8a;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .yes {
+      background: #ff5c8a;
+      color: white;
+    }
+
+    .no {
+      background: #f2f2f2;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1 id="question">Will you be my Valentine? 💖</h1>
+    <div class="buttons">
+      <button class="yes" onclick="goToLove()">Yes</button>
+      <button class="no" id="noBtn" onclick="handleNo()">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noTexts = [
+      "Please na 🥺",
+      "Are you sure? 🥹",
+      "Ek baar soch lo 💔",
+      "Man jao na 😭",
+      "Okay fine… Yes 😌"
+    ];
+
+    let noClickCount = 0;
+
+    function handleNo() {
+      const noBtn = document.getElementById("noBtn");
+
+      if (noClickCount < noTexts.length - 1) {
+        noBtn.innerText = noTexts[noClickCount];
+        noClickCount++;
+      } else {
+        // Turn into Yes
+        noBtn.innerText = "Yes 💖";
+        noBtn.classList.remove("no");
+        noBtn.classList.add("yes");
+        noBtn.onclick = goToLove;
+      }
+    }
+
+    function goToLove() {
+      window.location.href = "love.html";
+    }
+  </script>
+
+</body>
+</html>

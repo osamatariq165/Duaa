@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Love 💕</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fff0f5, #ffe6eb);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .letter {
+      background: white;
+      padding: 50px;
+      max-width: 520px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #ff5c8a;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .signature {
+      margin-top: 30px;
+      text-align: right;
+      font-weight: bold;
+      color: #ff5c8a;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 18px;
+      background: #ff5c8a;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+      vertical-align: bottom;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    .music-hint {
+      margin-top: 15px;
+      font-size: 12px;
+      text-align: center;
+      color: #999;
+    }
+
+    /* Floating hearts */
+.heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ff5c8a;
+  transform: rotate(45deg);
+  animation: float 6s infinite ease-in;
+  opacity: 0.8;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ff5c8a;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -9px;
+  left: 0;
+}
+.heart::after {
+  left: 9px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-270px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- 🎶 Background Music -->
+  <audio id="bgMusic" autoplay loop>
+    <!-- Replace music.mp3 with your file name -->
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="letter">
+    <h1>Duaa 💖</h1>
+    <div id="text"></div><span class="cursor"></span>
+
+    <div class="signature" id="signature"></div>
+
+    <div class="music-hint">
+      🎶 If you can hear music, this letter is thinking of you
+    </div>
+  </div>
+
+  <script>
+    const letterText = [
+      "Dear Duaa,",
+      "",
+      "Some people make the world brighter just by being in it —",
+      "you somehow managed to make mine softer, warmer, and full of smiles.",
+      "",
+      "You are my favorite thought at random moments,",
+      "my calm in chaos, and my happiness wrapped in human form.",
+      "",
+      "Loving you feels playful like laughter,",
+      "and deep like poetry that doesn’t need to rhyme to be perfect.",
+      "",
+      "Thank you for being you — effortlessly, beautifully you.",
+      "I choose you today, tomorrow, and in every little moment in between.",
+    ];
+
+    const signatureText = "Forever yours ❤️<br>Osama";
+
+    const textContainer = document.getElementById("text");
+    const signatureContainer = document.getElementById("signature");
+
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    function typeLine() {
+      if (lineIndex < letterText.length) {
+        if (charIndex < letterText[lineIndex].length) {
+          textContainer.innerHTML += letterText[lineIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(typeLine, 40); // typing speed
+        } else {
+          textContainer.innerHTML += "<br><br>";
+          charIndex = 0;
+          lineIndex++;
+          setTimeout(typeLine, 400);
+        }
+      } else {
+        signatureContainer.innerHTML = signatureText;
+      }
+    }
+
+    typeLine();
+
+    // Autoplay fix for some browsers (requires user interaction)
+    document.body.addEventListener("click", () => {
+      document.getElementById("bgMusic").play();
+    }, { once: true });
+
+      // create floating hearts
+function spawnHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.bottom = "-20px";
+  heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+  document.body.appendChild(heart);
+
+  // remove heart after animation
+  setTimeout(() => heart.remove(), 6000);
+}
+
+// generate hearts every 500ms
+setInterval(spawnHeart, 400);
+  </script>
+
+
+</body>
+</html>
