@@ -65,6 +65,33 @@
       color: #999;
     }
 
+      /* Back button */
+    .back-btn {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(255, 92, 138, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: #ff5c8a;
+      font-size: 24px;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 92, 138, 0.5);
+      background: #ff5c8a;
+      color: white;
+    }
+
     /* Floating hearts */
 .heart {
   position: absolute;
@@ -110,6 +137,9 @@
 </head>
 <body>
 
+   <!-- Back button -->
+  <a href="index.html" class="back-btn" title="Go back">←</a>
+
   <!-- 🎶 Background Music -->
   <audio id="bgMusic" autoplay loop>
     <!-- Replace music.mp3 with your file name -->
@@ -140,8 +170,9 @@
       "Loving you feels playful like laughter,",
       "and deep like poetry that doesn’t need to rhyme to be perfect.",
       "",
-      "Thank you for being you — effortlessly, beautifully you.",
+      "Thank you for being you — effortlessly, beautifully you and for being my Valentine every day.",
       "I choose you today, tomorrow, and in every little moment in between.",
+      "I love uh so much meri jaaan 💖"
     ];
 
     const signatureText = "Forever yours ❤️<br>Osama";
